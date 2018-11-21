@@ -81,7 +81,6 @@ class Obra {
 		
 	}
 	
-	method metrosCuadradosNecesarios() =0
 	method implementosDeAguaNecesarios() =0
 	method implementosDeGasNecesarios() =0
 	method metrosDeCablesElectricosNecesarios()=0
@@ -103,6 +102,10 @@ class Obra {
 	method registrarPago() {obreros.forEach{obrero=> efectivo -= obrero.totalDeudaSueldo(uocra)
 													obrero.jornalesAdeudados(0)
 	}}
+
+	method metrosCuadradosNecesarios() {return self.habitacionesTotales() * 50}
+	
+	method habitacionesTotales() 
 	
 }
 
@@ -113,7 +116,7 @@ class Casa inherits Obra {
 	var property cantHabitaciones
 	var property cantBanios
 	
-	override method metrosCuadradosNecesarios() {return cantHabitaciones * 50}
+	override method habitacionesTotales() { return cantHabitaciones }
 	
 	override method implementosDeAguaNecesarios() {return cantBanios * 10}
 	
@@ -134,12 +137,10 @@ class Edificio inherits Obra{
 	
 	method departamentosTotales() {return cantPisos * departamentosPorPiso}
 	
-	method habitacionesTotales() {return self.departamentosTotales() * habitacionesPorDepartamento}
+	override method habitacionesTotales() {return self.departamentosTotales() * habitacionesPorDepartamento}
 	
 	method baniosTotales() {return self.habitacionesTotales() * baniosPorDepto}
-	
-	override method metrosCuadradosNecesarios() {return self.habitacionesTotales() * 50}
-	
+		
 	override method implementosDeAguaNecesarios() {return self.baniosTotales() * 10}
 	
 	override method implementosDeGasNecesarios() {

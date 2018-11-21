@@ -24,7 +24,7 @@ class Obrero {
 	method implementoGas() = 0
 	method metrosDeCableElectrico() = 0
 	
-	method totalDeudaSueldo(uocra) {return jornalesAdeudados}
+	method totalDeudaSueldo() {return jornalesAdeudados}
 }
 
 
@@ -34,7 +34,7 @@ class Albanil inherits Obrero {
 	 
 	 override method metrosDePared() = 3
 	 
-	 override method totalDeudaSueldo(uocra) {return super(uocra) * uocra.sueldoAlbanil()}
+	 override method totalDeudaSueldo() {return super() * uocra.sueldoAlbanil()}
 	
 }
 
@@ -46,7 +46,7 @@ class Gasista inherits Obrero {
 	
 	override method implementoGas()= 1
 	
-	override method totalDeudaSueldo(uocra) {return super(uocra) * uocra.sueldoEspecialistasBanioYCocina()}
+	override method totalDeudaSueldo() {return super() * uocra.sueldoEspecialistasBanioYCocina()}
 		
 } 
 
@@ -58,7 +58,7 @@ class Plomero inherits Obrero {
 	
 	override method implementoAgua() = 0.5
 	
-	override method totalDeudaSueldo(uocra) {return super(uocra) * uocra.sueldoEspecialistasBanioYCocina()}
+	override method totalDeudaSueldo() {return super() * uocra.sueldoEspecialistasBanioYCocina()}
 	
 
 
@@ -72,7 +72,7 @@ class Electricista inherits Obrero {
 	
 	override method metrosDeCableElectrico() = 4	
 	
-	override method totalDeudaSueldo(uocra) {return super(uocra) * uocra.sueldoElectricistas()}
+	override method totalDeudaSueldo() {return super() * uocra.sueldoElectricistas()}
 }
 
 
